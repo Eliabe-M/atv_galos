@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registro de Galos de Briga</title>
+    </head>
+    <body>
+        <h1>Registro de Galos de Briga</h1>
+        <h2>Galos de Briga Registrados</h2>
+        <ul>
+            <% roosters.forEach(function(rooster) { %>
+                <li>
+                    Raça: <%= rooster.breed %>, 
+                    Valor: <%= rooster.value %>, 
+                    Tamanho: <%= rooster.size %>, 
+                    Peso: <%= rooster.weight %>
+                </li>
+                <!-- Botão de Exclusão -->
+                <form action="/delete" method="post">
+                    <input type="hidden" name="breed" value="<%= rooster.breed %>">
+                    <button type="submit">Excluir</button>
+                </form>
+            <% }); %>
+        </ul>
+
+        <h2>Adicionar Galo de Briga</h2>
+        <form action="/register" method="post">
+            <label for="breed">Raça do Galo:</label><br>
+            <input type="text" id="breed" name="breed" placeholder="Raça do Galo"><br>
+            <label for="value">Valor:</label><br>
+            <input type="text" id="value" name="value" placeholder="Valor"><br>
+            <label for="size">Tamanho:</label><br>
+            <input type="text" id="size" name="size" placeholder="Tamanho"><br>
+            <label for="weight">Peso:</label><br>
+            <input type="text" id="weight" name="weight" placeholder="Peso"><br>
+            <button type="submit">Registrar</button>
+        </form>
+    </body>
+</html>
